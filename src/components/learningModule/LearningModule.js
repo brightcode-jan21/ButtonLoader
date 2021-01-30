@@ -3,6 +3,7 @@ import ProgressBar from '../progressBar/ProgressBar';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
+import { Spinner } from '../icons/Spinner'
 
 import './Styles.scss';
 
@@ -67,7 +68,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" inactive handleSubmit={ handleSubmit } />
+              <Button label="Submit" inactive handleSubmit={ handleSubmit } icon={<Spinner />} />
             </div>
           </div>
         </>
