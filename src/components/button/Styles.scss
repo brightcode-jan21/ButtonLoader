@@ -8,10 +8,28 @@
   border-radius: 25px;
   font-weight: 600;
   background-color: $grass-blade;
-  padding: 0 2em;
+  padding: 0 3em;
   cursor: pointer;
 
   &--inactive{
     background-color: $elephant-paw;
+  }
+
+  &--loading::after{
+    position: absolute;
+    margin-left: 0.5rem;
+    content: url('./loading.svg');
+    transform-origin: 50% 41%;
+    animation: loading 1.5s linear infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+   
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }

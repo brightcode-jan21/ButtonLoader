@@ -4,8 +4,12 @@ import './Styles.scss';
 
 const Button = (props) => {
 
+  const buttonClass = props.label ==="Submit" ? ("submitButton " + (props.active ? "submitButton--loading" : "submitButton--inactive" )) 
+  : "submitButton " ;
+
+
   return (
-    <div className={"submitButton " + (props.inactive ? "submitButton--inactive" : "")} onClick={props.handleSubmit} >
+    <div className={buttonClass} onClick={props.handleSubmit} >
       {props.label}
     </div>
   )
