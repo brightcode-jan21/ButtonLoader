@@ -10,6 +10,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
   const [isComplete, setIsComplete] = React.useState(false);
+  const [loading, setLoading] = React.useState(false)
   
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   
@@ -29,9 +30,11 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   }
 
   const handleSubmit=()=> {
+    setLoading(true)
       if(currentQuestionId < quizData.totalQuestions-1){
         setTimeout(function(){
           setCurrentQuestionId(currentQuestionId+1);
+          setLoading(false)
         }, 700 );
     } else if (!isComplete) {
       setIsComplete(true);
@@ -40,7 +43,9 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
       setIsComplete(false);
       setGameStatus('new');
     }
+ 
   }
+
   let possibleAnswers = [];
   if(currentQuestion.possibleAnswers){
     possibleAnswers = currentQuestion.possibleAnswers.map((answer, index) => {
@@ -67,7 +72,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" inactive handleSubmit={ handleSubmit } />
+              <Button label="Submit" active handleSubmit={ handleSubmit } loading={loading}/>
             </div>
           </div>
         </>
